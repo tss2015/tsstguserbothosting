@@ -1,0 +1,16 @@
+[Unit]
+Description=Telegram Userbot Hosting Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=telegrambot
+WorkingDirectory=/opt/telegram-userbot
+EnvironmentFile=/opt/telegram-userbot/.env
+ExecStart=/opt/telegram-userbot/.venv/bin/python /opt/telegram-userbot/bot.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
